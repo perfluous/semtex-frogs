@@ -1,0 +1,9 @@
+# System hardening
+# Set the system hardening role to run on all hosts
+- hosts: localhost
+  roles:
+    - devsec.hardening.os_hardening
+  vars:
+    sysctl_overwrite:
+      # Enable IPv4 traffic forwarding.
+      net.ipv4.ip_forward: 1

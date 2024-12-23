@@ -1,0 +1,16 @@
+# main.yml
+---
+- name: Apply Traefik ClusterRole
+  community.kubernetes.k8s:
+    state: present
+    src: "files/00-role.yml"
+
+- name: Apply Traefik ServiceAccount
+  community.kubernetes.k8s:
+    state: present
+    src: "files/00-account.yml"
+
+- name: Apply Traefik ClusterRoleBinding
+  community.kubernetes.k8s:
+    state: present
+    src: "files/01-role-binding.yml"

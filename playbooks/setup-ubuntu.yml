@@ -1,0 +1,26 @@
+---
+- hosts: all
+  vars_files:
+    - /SemtexAnsible/secrets/secret.yml
+  tasks:
+    - name: Example task
+      debug:
+        msg: "The password is {{ secret_password }}"
+
+- name: Setup Ubuntu and Kubernetes Environment
+  hosts: <your-target-hosts>
+  gather_facts: yes
+  roles:
+    - ubuntu-setup
+
+- name: Setup Space in Kubernetes
+  hosts: <your-target-hosts>
+  gather_facts: no
+  roles:
+    - space-setup
+
+- name: Setup Traefik in Kubernetes
+  hosts: <your-target-hosts>
+  gather_facts: no
+  roles:
+    - traefik-setup
